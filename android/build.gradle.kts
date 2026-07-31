@@ -1,4 +1,5 @@
 import com.android.build.gradle.BaseExtension
+import com.android.build.gradle.BasePlugin
 
 allprojects {
     repositories {
@@ -8,13 +9,8 @@ allprojects {
 }
 
 subprojects {
-    project.pluginManager.withPlugin("com.android.library") {
-        project.extensions.configure<BaseExtension> {
-            compileSdkVersion(34)
-        }
-    }
-    project.pluginManager.withPlugin("com.android.application") {
-        project.extensions.configure<BaseExtension> {
+    plugins.withType<BasePlugin> {
+        configure<BaseExtension> {
             compileSdkVersion(34)
         }
     }
