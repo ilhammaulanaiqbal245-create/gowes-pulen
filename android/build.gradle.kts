@@ -10,7 +10,7 @@ allprojects {
 subprojects {
     fun Project.applyAndroidConfig() {
         extensions.findByType(BaseExtension::class.java)?.apply {
-            compileSdkVersion(35)
+            compileSdkVersion(36)
         }
     }
     if (state.executed) {
