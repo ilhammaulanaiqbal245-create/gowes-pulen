@@ -9,7 +9,9 @@ allprojects {
 
 subprojects {
     fun Project.applyAndroidConfig() {
-        extensions.findByType(BaseExtension::class.java)?.compileSdkVersion(34)
+        extensions.findByType(BaseExtension::class.java)?.apply {
+            compileSdkVersion(35)
+        }
     }
     if (state.executed) {
         applyAndroidConfig()
