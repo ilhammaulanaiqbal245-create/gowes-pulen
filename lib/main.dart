@@ -67,7 +67,6 @@ class GowesPulenUltimateApp extends StatelessWidget {
   }
 }
 
-// ================= 1. AUTH SCREEN & SECURITY =================
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
 
@@ -150,7 +149,6 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 }
 
-// ================= 2. HOME SCREEN & NAVIGATION =================
 class HomeScreen extends StatefulWidget {
   final String username;
   const HomeScreen({super.key, required this.username});
@@ -194,7 +192,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-// ================= 3. RIDE TRACKER & MAPS =================
 class RideTrackerScreen extends StatefulWidget {
   final String username;
   const RideTrackerScreen({super.key, required this.username});
@@ -284,7 +281,6 @@ class _RideTrackerScreenState extends State<RideTrackerScreen> {
   }
 }
 
-// ================= 4. GROUP CHAT SCREEN =================
 class GroupChatScreen extends StatefulWidget {
   final String username;
   const GroupChatScreen({super.key, required this.username});
@@ -421,7 +417,6 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
   }
 }
 
-// ================= 5. PELOTON MEMBERS & STATS =================
 class PelotonMembersScreen extends StatelessWidget {
   final String currentUsername;
   const PelotonMembersScreen({super.key, required this.currentUsername});
@@ -461,7 +456,6 @@ class PelotonMembersScreen extends StatelessWidget {
   }
 }
 
-// ================= 6. PROFILE & SETTINGS =================
 class ProfileScreen extends StatelessWidget {
   final String username;
   const ProfileScreen({super.key, required this.username});
