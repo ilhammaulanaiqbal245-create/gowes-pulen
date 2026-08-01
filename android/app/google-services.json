@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "457828944806-h35f3fg8cb4v1flnkfi14nkt7s5vgchm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gowes_pulen",
+            "certificate_hash": "b20704709b91bca5312e9e267968bc457642eff7"
+          }
+        },
+        {
           "client_id": "457828944806-9cdr80rrdjjnd25tasimv38jcd7ck3l4.apps.googleusercontent.com",
           "client_type": 3
         }
