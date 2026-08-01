@@ -27,7 +27,7 @@ jobs:
 
       - name: Install Dependencies
         run: flutter pub get
-          - name: Setup Keystore
+      - name: Setup Keystore
         run: |
           mkdir -p ~/.config/.android ~/.android
           cp android/app/debug.keystore ~/.config/.android/debug.keystore
