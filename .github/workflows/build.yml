@@ -11,28 +11,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Java JDK
-        uses: actions/setup-java@v4
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "17"
+          java-version: '17'
 
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@v2
         with:
           channel: stable
 
-      - name: Install Dependencies
-        run: flutter pub get
-
-      - name: Setup Keystore
+      - name: Install Android SDK Components
         run: |
-          mkdir -p ~/.config/.android ~/.android
-          cp android/app/debug.keystore ~/.config/.android/debug.keystore
-          cp android/app/debug.keystore ~/.android/debug.keystore
+          sdkmanager "platform-tools"
+          sdkmanager "platforms;android-35"
+          sdkmanager "build-tools;35.0.0"
+          sdkmanager "cmake;3.22.1"
+          yes | sdkmanager --licenses
+
+      - name: Flutter Pub Get
+        run: flutter pub get
 
       - name: Build Release APK
         run: flutter build apk --release
