@@ -1,6 +1,6 @@
 plugins {
     id("com.android.application")
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id("kotlin-android")
     id("dev.flutter.flutter-gradle-plugin")
 }
 
@@ -15,26 +15,18 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.gowes_pulen"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = 24
         targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-    }    buildTypes {
-        getByName("release") {
-            // TULISAN KUNCI DI SINI:
-            signingConfig = signingConfigs.getByName("debug")
-            
-            isMinifyEnabled = false
-            isShrinkResources = false
-        }
     }
 
-
-    
+    buildTypes {
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 }
@@ -46,5 +38,5 @@ kotlin {
 }
 
 flutter {
-    source = "../.."
+    source = "../../"
 }
