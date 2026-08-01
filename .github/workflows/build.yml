@@ -28,7 +28,11 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
       - name: Get SHA1 Fingerprint
-        run: cd android && chmod +x gradlew && ./gradlew signingReport
+        run: |
+          mkdir -p ~/.config/.android
+          keytool -genkey -v -keystore ~/.config/.android/debug.keystore -storepass android -alias AndroidDebugKey -keypass android -dname "CN=Android Debug,O=Android,C=US" -keyalg RSA -keysize 2048 -validity 10000
+          cd android && chmod +x gradlew && ./gradlew signingReport
+
 
       - name: Build APK via Direct Gradlew
         working-directory: android
