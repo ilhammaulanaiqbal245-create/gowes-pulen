@@ -35,14 +35,11 @@ jobs:
 
 
 
-      - name: Build APK via Direct Gradlew
-        working-directory: android
-        run: |
-          chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon
+      - name: Build Release APK
+         run: flutter build apk --release
 
-      - name: Upload APK Artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: release-apk
-          path: android/app/build/outputs/apk/release/app-release.apk
+        name: gowes-pulen-release
+        path: build/app/outputs/flutter-apk/app-release.apk
