@@ -27,11 +27,15 @@ jobs:
       - name: Flutter Pub Get
         run: flutter pub get
 
-      - name: Build Release APK
+      - name: Build APK
         run: flutter build apk --release
+
+      - name: Check APK
+        run: |
+          find build -name "*.apk"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: gowes-pulen-release
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/flutter-apk/*.apk
