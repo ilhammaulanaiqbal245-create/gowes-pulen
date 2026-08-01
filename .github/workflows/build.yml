@@ -23,12 +23,12 @@ jobs:
           channel: stable
 
       - name: Install Android SDK Components
-        run: |
-          sdkmanager "platform-tools"
-          sdkmanager "platforms;android-35"
-          sdkmanager "build-tools;35.0.0"
-          sdkmanager "cmake;3.22.1"
-          yes | sdkmanager --licenses
+         run: |
+           yes | sdkmanager --licenses
+           sdkmanager "platform-tools"
+           sdkmanager "platforms;android-35"
+           sdkmanager "build-tools;35.0.0"
+           sdkmanager "cmake;3.22.1"
 
       - name: Flutter Pub Get
         run: flutter pub get
