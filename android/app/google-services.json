@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "457828944806",
+    "project_id": "gowea-app",
+    "storage_bucket": "gowea-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457828944806:android:c6a00e65dd725a7ae59d67",
+        "android_client_info": {
+          "package_name": "com.example.gowes_pulen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457828944806-9cdr80rrdjjnd25tasimv38jcd7ck3l4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdxZVy8H-UvUhvV0oWnNLWQ-icTXQ0XR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457828944806-9cdr80rrdjjnd25tasimv38jcd7ck3l4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
