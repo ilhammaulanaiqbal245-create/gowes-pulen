@@ -81,7 +81,9 @@ class _AuthScreenState extends State<AuthScreen> {
   Future<void> _loginWithGoogle() async {
     setState(() => _isLoading = true);
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAccount? googleUser = await GoogleSignIn(
+        serverClientId: '457828944806-9cd...apps.googleusercontent.com',
+      ).signIn();
       if (googleUser == null) {
         setState(() => _isLoading = false);
         return;
@@ -282,7 +284,7 @@ class _RideTrackerScreenState extends State<RideTrackerScreen> {
   }
 }
 
-// ================= 4. GROUP CHAT SCREEN (Reactions, Edit, SOS, Media) =================
+// ================= 4. GROUP CHAT SCREEN =================
 class GroupChatScreen extends StatefulWidget {
   final String username;
   const GroupChatScreen({super.key, required this.username});
