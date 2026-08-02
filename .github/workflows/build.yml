@@ -42,8 +42,13 @@ jobs:
       - name: Get Packages
         run: flutter pub get
 
+      - name: Precache Flutter
+        run: flutter precache --android
+
       - name: Build APK
-        run: flutter build apk --release --verbose
+        run: |
+          flutter pub get
+          flutter build apk --release
 
       - name: Upload APK
         if: success()
