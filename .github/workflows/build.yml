@@ -29,6 +29,9 @@ jobs:
       - name: Flutter Version
         run: flutter --version
 
+      - name: Flutter Doctor
+        run: flutter doctor -v
+
       - name: Clean Project
         run: flutter clean
 
@@ -36,14 +39,13 @@ jobs:
         run: flutter pub get
 
       - name: Build Release APK
-        run: flutter build apk --release
-
-      - name: Find APK
-        run: find . -name "*.apk"
+        run: |
+          flutter build apk --release --verbose
+          echo "=== APK FILES ==="
+          find . -name "*.apk"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: gowes-pulen-release
-          path: |
-            **/*.apk
+          path: "**/*.apk"
