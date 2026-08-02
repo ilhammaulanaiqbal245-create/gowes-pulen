@@ -23,31 +23,34 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: stable
+          flutter-version: "3.32.8"
           cache: true
 
       - name: Flutter Version
         run: flutter --version
 
       - name: Flutter Doctor
-        run: flutter doctor
+        run: flutter doctor -v
+
+      - name: Stop Gradle Daemon
+        working-directory: android
+        run: ./gradlew --stop || true
 
       - name: Clean Project
         run: flutter clean
 
-      - name: Install Dependencies
+      - name: Get Dependencies
         run: flutter pub get
 
       - name: Build Release APK
-        run: |
-          flutter build apk --release --android-skip-build-dependency-validation
+        run: flutter build apk --release -v
 
       - name: Cari APK
         run: |
           echo "========== APK FILES =========="
           find . -name "*.apk"
 
-          echo "========== BUILD FOLDER =========="
+          echo "========== BUILD =========="
           ls -R build || true
 
           echo "========== ANDROID BUILD =========="
@@ -57,9 +60,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: gowes-pulen-release
+          if-no-files-found: error
           path: |
-            build/**
-            build/app/outputs/flutter-apk/app-release.apk
-            build/app/outputs/apk/release/app-release.apk
-            android/app/build/outputs/apk/release/app-release.apk
-            **/*.apk
+            build/app/outputs/flutter-apk/*.apk
+            build/app/outputs/apk/release/*.apk
+            android/app/build/outputs/apk/release/*.apk
