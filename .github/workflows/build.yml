@@ -40,7 +40,6 @@ jobs:
 
       - name: Build Release APK
         run: flutter build apk --release --verbose
-        continue-on-error: true
 
       - name: Cari APK
         run: |
@@ -58,6 +57,7 @@ jobs:
         with:
           name: gowes-pulen-release
           path: |
-            build/app/outputs/flutter-apk/*.apk
-            android/app/build/outputs/apk/**/*.apk
+            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/apk/release/app-release.apk
+            android/app/build/outputs/apk/release/app-release.apk
             **/*.apk
