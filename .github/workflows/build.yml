@@ -45,12 +45,20 @@ jobs:
       - name: Precache Flutter
         run: flutter precache --android
 
+      - name: Kill Gradle
+        run: pkill -f gradle || true
+
       - name: Build APK
-        run: flutter build apk --release
+        run: |
+          flutter build apk --release --verbose
+          echo "========== APK FILES =========="
+          find . -name "*.apk" || true
 
       - name: Upload APK
-        if: success()
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: gowes-pulen-release
-          path: build/app/outputs/flutter-apk/*.apk
+          path: |
+            build/**/*.apk
+            **/*.apk
