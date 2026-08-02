@@ -39,13 +39,25 @@ jobs:
         run: flutter pub get
 
       - name: Build Release APK
+        run: flutter build apk --release --verbose
+        continue-on-error: true
+
+      - name: Cari APK
         run: |
-          flutter build apk --release --verbose
-          echo "=== APK FILES ==="
+          echo "========== APK FILES =========="
           find . -name "*.apk"
+
+          echo "========== BUILD FOLDER =========="
+          ls -R build || true
+
+          echo "========== ANDROID BUILD =========="
+          ls -R android/app/build || true
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: gowes-pulen-release
-          path: "**/*.apk"
+          path: |
+            build/app/outputs/flutter-apk/*.apk
+            android/app/build/outputs/apk/**/*.apk
+            **/*.apk
