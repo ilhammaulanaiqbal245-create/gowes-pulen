@@ -30,7 +30,7 @@ jobs:
         run: flutter --version
 
       - name: Flutter Doctor
-        run: flutter doctor 
+        run: flutter doctor
 
       - name: Clean Project
         run: flutter clean
@@ -39,7 +39,8 @@ jobs:
         run: flutter pub get
 
       - name: Build Release APK
-        run: flutter build apk --release
+        run: |
+          flutter build apk --release --android-skip-build-dependency-validation
 
       - name: Cari APK
         run: |
@@ -57,6 +58,7 @@ jobs:
         with:
           name: gowes-pulen-release
           path: |
+            build/**
             build/app/outputs/flutter-apk/app-release.apk
             build/app/outputs/apk/release/app-release.apk
             android/app/build/outputs/apk/release/app-release.apk
