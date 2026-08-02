@@ -39,7 +39,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Release APK
-        run: flutter build apk --release --verbose
+        run: flutter build apk --release
 
       - name: Cari APK
         run: |
