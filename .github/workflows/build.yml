@@ -30,7 +30,7 @@ jobs:
         run: flutter --version
 
       - name: Flutter Doctor
-        run: flutter doctor -v
+        run: flutter doctor 
 
       - name: Clean Project
         run: flutter clean
