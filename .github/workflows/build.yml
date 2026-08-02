@@ -49,10 +49,17 @@ jobs:
         run: pkill -f gradle || true
 
       - name: Build APK
+        working-directory: android
         run: |
-          flutter build apk --release --verbose
+          ./gradlew clean
+          ./gradlew assembleRelease --stacktrace
+
+      - name: Cari APK
+        run: |
           echo "========== APK FILES =========="
-          find . -name "*.apk" || true
+          find . -type f -name "*.apk"
+          echo "========== OUTPUT FOLDER =========="
+          ls -R android/app/build/outputs || true
 
       - name: Upload APK
         if: always()
@@ -60,5 +67,7 @@ jobs:
         with:
           name: gowes-pulen-release
           path: |
+            android/app/build/outputs/apk/release/*.apk
+            android/app/build/outputs/**/*.apk
             build/**/*.apk
             **/*.apk
